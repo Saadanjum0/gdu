@@ -244,7 +244,7 @@ func TestTrashCommandPassesPathAsArgumentAndEnvVar(t *testing.T) {
 
 	data, err := os.ReadFile(out)
 	require.NoError(t, err)
-	assert.Equal(t, []string{"1", wantPath, wantPath}, strings.Fields(string(data)))
+	assert.Equal(t, []string{"1", wantPath, wantPath}, strings.Split(strings.TrimSuffix(string(data), "\n"), "\n"))
 }
 
 // TestTrashCommandWithSpecialCharsInName makes sure item names are never
